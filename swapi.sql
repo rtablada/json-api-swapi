@@ -41,42 +41,24 @@ CREATE TABLE public.film (
     id integer NOT NULL,
     created timestamp with time zone NOT NULL,
     edited timestamp with time zone NOT NULL,
-    title character varying(100) NOT NULL,
-    episode_id integer NOT NULL,
-    opening_crawl text NOT NULL,
-    director character varying(100) NOT NULL,
-    producer character varying(100) NOT NULL,
+    title CHARACTER varying(100) NOT NULL,
+    episodeId integer NOT NULL,
+    openingCrawl text NOT NULL,
+    director CHARACTER varying(100) NOT NULL,
+    producer CHARACTER varying(100) NOT NULL,
     release_date date NOT NULL
 );
 
 
 
 --
--- Name: film_characters; Type: TABLE; Schema: public;
+-- Name: person_film; Type: TABLE; Schema: public;
 --
 
-CREATE TABLE public.film_characters (
-    id integer NOT NULL,
+CREATE TABLE public.person_film (
     film_id integer NOT NULL,
     people_id integer NOT NULL
 );
-
-
-
---
--- Name: film_characters_id_seq; Type: SEQUENCE; Schema: public;
---
-
-CREATE SEQUENCE public.film_characters_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
 
 --
 -- Name: film_id_seq; Type: SEQUENCE; Schema: public;
@@ -89,16 +71,11 @@ CREATE SEQUENCE public.film_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
-
-
-
 --
--- Name: film_planets; Type: TABLE; Schema: public;
+-- Name: film_planet; Type: TABLE; Schema: public;
 --
 
-CREATE TABLE public.film_planets (
-    id integer NOT NULL,
+CREATE TABLE public.film_planet (
     film_id integer NOT NULL,
     planet_id integer NOT NULL
 );
@@ -106,100 +83,42 @@ CREATE TABLE public.film_planets (
 
 
 --
--- Name: film_planets_id_seq; Type: SEQUENCE; Schema: public;
+-- Name: film_planet_id_seq; Type: SEQUENCE; Schema: public;
 --
 
-CREATE SEQUENCE public.film_planets_id_seq
+CREATE SEQUENCE public.film_planet_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
-
-
 
 --
 -- Name: film_species; Type: TABLE; Schema: public;
 --
 
 CREATE TABLE public.film_species (
-    id integer NOT NULL,
     film_id integer NOT NULL,
     species_id integer NOT NULL
 );
 
-
-
 --
--- Name: film_species_id_seq; Type: SEQUENCE; Schema: public;
+-- Name: film_starship; Type: TABLE; Schema: public;
 --
 
-CREATE SEQUENCE public.film_species_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-
---
--- Name: film_starships; Type: TABLE; Schema: public;
---
-
-CREATE TABLE public.film_starships (
-    id integer NOT NULL,
+CREATE TABLE public.film_starship (
     film_id integer NOT NULL,
     starship_id integer NOT NULL
 );
 
-
-
 --
--- Name: film_starships_id_seq; Type: SEQUENCE; Schema: public;
+-- Name: film_vehicle; Type: TABLE; Schema: public;
 --
 
-CREATE SEQUENCE public.film_starships_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-
---
--- Name: film_vehicles; Type: TABLE; Schema: public;
---
-
-CREATE TABLE public.film_vehicles (
-    id integer NOT NULL,
+CREATE TABLE public.film_vehicle (
     film_id integer NOT NULL,
     vehicle_id integer NOT NULL
 );
-
-
-
---
--- Name: film_vehicles_id_seq; Type: SEQUENCE; Schema: public;
---
-
-CREATE SEQUENCE public.film_vehicles_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
 
 --
 -- Name: people; Type: TABLE; Schema: public;
@@ -209,18 +128,16 @@ CREATE TABLE public.people (
     id integer NOT NULL,
     created timestamp with time zone NOT NULL,
     edited timestamp with time zone NOT NULL,
-    name character varying(100) NOT NULL,
-    height character varying(10) NOT NULL,
-    mass character varying(10) NOT NULL,
-    hair_color character varying(20) NOT NULL,
-    skin_color character varying(20) NOT NULL,
-    eye_color character varying(20) NOT NULL,
-    birth_year character varying(10) NOT NULL,
-    gender character varying(40) NOT NULL,
+    name CHARACTER varying(100) NOT NULL,
+    height CHARACTER varying(10) NOT NULL,
+    mass CHARACTER varying(10) NOT NULL,
+    hairColor CHARACTER varying(20) NOT NULL,
+    skinColor CHARACTER varying(20) NOT NULL,
+    eyeColor CHARACTER varying(20) NOT NULL,
+    birthYear CHARACTER varying(10) NOT NULL,
+    gender CHARACTER varying(40) NOT NULL,
     homeworld_id integer NOT NULL
 );
-
-
 
 --
 -- Name: people_id_seq; Type: SEQUENCE; Schema: public;
@@ -233,45 +150,35 @@ CREATE SEQUENCE public.people_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
-
-
-
 --
 -- Name: planet; Type: TABLE; Schema: public;
 --
 
-CREATE TABLE public.planet (
+CREATE TABLE public.planets (
     id integer NOT NULL,
     created timestamp with time zone NOT NULL,
     edited timestamp with time zone NOT NULL,
-    name character varying(100) NOT NULL,
-    rotation_period character varying(40) NOT NULL,
-    orbital_period character varying(40) NOT NULL,
-    diameter character varying(40) NOT NULL,
-    climate character varying(40) NOT NULL,
-    gravity character varying(40) NOT NULL,
-    terrain character varying(40) NOT NULL,
-    surface_water character varying(40) NOT NULL,
-    population character varying(40) NOT NULL
+    name CHARACTER varying(100) NOT NULL,
+    rotationPeriod CHARACTER varying(40) NOT NULL,
+    orbitalPeriod CHARACTER varying(40) NOT NULL,
+    diameter CHARACTER varying(40) NOT NULL,
+    climate CHARACTER varying(40) NOT NULL,
+    gravity CHARACTER varying(40) NOT NULL,
+    terrain CHARACTER varying(40) NOT NULL,
+    surfaceWater CHARACTER varying(40) NOT NULL,
+    population CHARACTER varying(40) NOT NULL
 );
 
-
-
 --
--- Name: planet_id_seq; Type: SEQUENCE; Schema: public;
+-- Name: planets_id_seq; Type: SEQUENCE; Schema: public;
 --
 
-CREATE SEQUENCE public.planet_id_seq
+CREATE SEQUENCE public.planets_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
-
-
 
 --
 -- Name: species; Type: TABLE; Schema: public;
@@ -281,19 +188,17 @@ CREATE TABLE public.species (
     id integer NOT NULL,
     created timestamp with time zone NOT NULL,
     edited timestamp with time zone NOT NULL,
-    name character varying(40) NOT NULL,
-    classification character varying(40) NOT NULL,
-    designation character varying(40) NOT NULL,
-    average_height character varying(40) NOT NULL,
-    skin_colors character varying(200) NOT NULL,
-    hair_colors character varying(200) NOT NULL,
-    eye_colors character varying(200) NOT NULL,
-    average_lifespan character varying(40) NOT NULL,
-    language character varying(40) NOT NULL,
+    name CHARACTER varying(40) NOT NULL,
+    classification CHARACTER varying(40) NOT NULL,
+    designation CHARACTER varying(40) NOT NULL,
+    averageHeight CHARACTER varying(40) NOT NULL,
+    skinColors CHARACTER varying(200) NOT NULL,
+    hairColors CHARACTER varying(200) NOT NULL,
+    eyeColors CHARACTER varying(200) NOT NULL,
+    averageLifespan CHARACTER varying(40) NOT NULL,
+    language CHARACTER varying(40) NOT NULL,
     homeworld_id integer
 );
-
-
 
 --
 -- Name: species_id_seq; Type: SEQUENCE; Schema: public;
@@ -306,56 +211,31 @@ CREATE SEQUENCE public.species_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
-
-
-
 --
--- Name: species_people; Type: TABLE; Schema: public;
+-- Name: person_species; Type: TABLE; Schema: public;
 --
 
-CREATE TABLE public.species_people (
-    id integer NOT NULL,
+CREATE TABLE public.person_species (
     species_id integer NOT NULL,
     people_id integer NOT NULL
 );
-
-
-
---
--- Name: species_people_id_seq; Type: SEQUENCE; Schema: public;
---
-
-CREATE SEQUENCE public.species_people_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
 
 --
 -- Name: starship; Type: TABLE; Schema: public;
 --
 
-CREATE TABLE public.starship (
+CREATE TABLE public.starships (
     transport_ptr_id integer NOT NULL,
-    hyperdrive_rating character varying(40) NOT NULL,
-    "MGLT" character varying(40) NOT NULL,
-    starship_class character varying(40) NOT NULL
+    hyperdrive_rating CHARACTER varying(40) NOT NULL,
+    "MGLT" CHARACTER varying(40) NOT NULL,
+    starshipClass CHARACTER varying(40) NOT NULL
 );
 
-
-
 --
--- Name: starship_pilots; Type: TABLE; Schema: public;
+-- Name: person_starship; Type: TABLE; Schema: public;
 --
 
-CREATE TABLE public.starship_pilots (
-    id integer NOT NULL,
+CREATE TABLE public.person_starship (
     starship_id integer NOT NULL,
     people_id integer NOT NULL
 );
@@ -385,16 +265,16 @@ CREATE TABLE public.transport (
     id integer NOT NULL,
     created timestamp with time zone NOT NULL,
     edited timestamp with time zone NOT NULL,
-    name character varying(40) NOT NULL,
-    model character varying(40) NOT NULL,
-    manufacturer character varying(80) NOT NULL,
-    cost_in_credits character varying(40) NOT NULL,
-    length character varying(40) NOT NULL,
-    max_atmosphering_speed character varying(40) NOT NULL,
-    crew character varying(40) NOT NULL,
-    passengers character varying(40) NOT NULL,
-    cargo_capacity character varying(40) NOT NULL,
-    consumables character varying(40) NOT NULL
+    name CHARACTER varying(40) NOT NULL,
+    model CHARACTER varying(40) NOT NULL,
+    manufacturer CHARACTER varying(80) NOT NULL,
+    cost_in_credits CHARACTER varying(40) NOT NULL,
+    length CHARACTER varying(40) NOT NULL,
+    max_atmosphering_speed CHARACTER varying(40) NOT NULL,
+    crew CHARACTER varying(40) NOT NULL,
+    passengers CHARACTER varying(40) NOT NULL,
+    cargo_capacity CHARACTER varying(40) NOT NULL,
+    consumables CHARACTER varying(40) NOT NULL
 );
 
 
@@ -420,7 +300,7 @@ CREATE SEQUENCE public.transport_id_seq
 
 CREATE TABLE public.vehicle (
     transport_ptr_id integer NOT NULL,
-    vehicle_class character varying(40) NOT NULL
+    vehicle_class CHARACTER varying(40) NOT NULL
 );
 
 
@@ -460,17 +340,17 @@ ALTER TABLE ONLY public.film ALTER COLUMN id SET DEFAULT nextval('public.film_id
 
 
 --
--- Name: film_characters id; Type: DEFAULT; Schema: public;
+-- Name: person_film id; Type: DEFAULT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_characters ALTER COLUMN id SET DEFAULT nextval('public.film_characters_id_seq'::regclass);
+ALTER TABLE ONLY public.person_film ALTER COLUMN id SET DEFAULT nextval('public.person_film_id_seq'::regclass);
 
 
 --
--- Name: film_planets id; Type: DEFAULT; Schema: public;
+-- Name: film_planet id; Type: DEFAULT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_planets ALTER COLUMN id SET DEFAULT nextval('public.film_planets_id_seq'::regclass);
+ALTER TABLE ONLY public.film_planet ALTER COLUMN id SET DEFAULT nextval('public.film_planet_id_seq'::regclass);
 
 
 --
@@ -481,17 +361,17 @@ ALTER TABLE ONLY public.film_species ALTER COLUMN id SET DEFAULT nextval('public
 
 
 --
--- Name: film_starships id; Type: DEFAULT; Schema: public;
+-- Name: film_starship id; Type: DEFAULT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_starships ALTER COLUMN id SET DEFAULT nextval('public.film_starships_id_seq'::regclass);
+ALTER TABLE ONLY public.film_starship ALTER COLUMN id SET DEFAULT nextval('public.film_starship_id_seq'::regclass);
 
 
 --
--- Name: film_vehicles id; Type: DEFAULT; Schema: public;
+-- Name: film_vehicle id; Type: DEFAULT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_vehicles ALTER COLUMN id SET DEFAULT nextval('public.film_vehicles_id_seq'::regclass);
+ALTER TABLE ONLY public.film_vehicle ALTER COLUMN id SET DEFAULT nextval('public.film_vehicle_id_seq'::regclass);
 
 
 --
@@ -516,17 +396,17 @@ ALTER TABLE ONLY public.species ALTER COLUMN id SET DEFAULT nextval('public.spec
 
 
 --
--- Name: species_people id; Type: DEFAULT; Schema: public;
+-- Name: person_species id; Type: DEFAULT; Schema: public;
 --
 
-ALTER TABLE ONLY public.species_people ALTER COLUMN id SET DEFAULT nextval('public.species_people_id_seq'::regclass);
+ALTER TABLE ONLY public.person_species ALTER COLUMN id SET DEFAULT nextval('public.person_species_id_seq'::regclass);
 
 
 --
--- Name: starship_pilots id; Type: DEFAULT; Schema: public;
+-- Name: person_starship id; Type: DEFAULT; Schema: public;
 --
 
-ALTER TABLE ONLY public.starship_pilots ALTER COLUMN id SET DEFAULT nextval('public.starship_new_pilots_id_seq'::regclass);
+ALTER TABLE ONLY public.person_starship ALTER COLUMN id SET DEFAULT nextval('public.starship_new_pilots_id_seq'::regclass);
 
 
 --
@@ -547,7 +427,7 @@ ALTER TABLE ONLY public.vehicle_pilots ALTER COLUMN id SET DEFAULT nextval('publ
 -- Data for Name: film; Type: TABLE DATA; Schema: public;
 --
 
-COPY public.film (id, created, edited, title, episode_id, opening_crawl, director, producer, release_date) FROM stdin;
+COPY public.film (id, created, edited, title, episodeId, openingCrawl, director, producer, release_date) FROM stdin;
 1	2014-12-10 08:23:31.88-06	2014-12-20 13:49:45.256-06	A New Hope	4	It is a period of civil war.\r\nRebel spaceships, striking\r\nfrom a hidden base, have won\r\ntheir first victory against\r\nthe evil Galactic Empire.\r\n\r\nDuring the battle, Rebel\r\nspies managed to steal secret\r\nplans to the Empire's\r\nultimate weapon, the DEATH\r\nSTAR, an armored space\r\nstation with enough power\r\nto destroy an entire planet.\r\n\r\nPursued by the Empire's\r\nsinister agents, Princess\r\nLeia races home aboard her\r\nstarship, custodian of the\r\nstolen plans that can save her\r\npeople and restore\r\nfreedom to the galaxy....	George Lucas	Gary Kurtz, Rick McCallum	1977-05-25
 2	2014-12-12 05:26:24.656-06	2014-12-15 07:07:53.386-06	The Empire Strikes Back	5	It is a dark time for the\r\nRebellion. Although the Death\r\nStar has been destroyed,\r\nImperial troops have driven the\r\nRebel forces from their hidden\r\nbase and pursued them across\r\nthe galaxy.\r\n\r\nEvading the dreaded Imperial\r\nStarfleet, a group of freedom\r\nfighters led by Luke Skywalker\r\nhas established a new secret\r\nbase on the remote ice world\r\nof Hoth.\r\n\r\nThe evil lord Darth Vader,\r\nobsessed with finding young\r\nSkywalker, has dispatched\r\nthousands of remote probes into\r\nthe far reaches of space....	Irvin Kershner	Gary Kurtz, Rick McCallum	1980-05-17
 3	2014-12-18 04:39:33.255-06	2014-12-20 03:48:37.462-06	Return of the Jedi	6	Luke Skywalker has returned to\r\nhis home planet of Tatooine in\r\nan attempt to rescue his\r\nfriend Han Solo from the\r\nclutches of the vile gangster\r\nJabba the Hutt.\r\n\r\nLittle does Luke know that the\r\nGALACTIC EMPIRE has secretly\r\nbegun construction on a new\r\narmored space station even\r\nmore powerful than the first\r\ndreaded Death Star.\r\n\r\nWhen completed, this ultimate\r\nweapon will spell certain doom\r\nfor the small band of rebels\r\nstruggling to restore freedom\r\nto the galaxy...	Richard Marquand	Howard G. Kazanjian, George Lucas, Rick McCallum	1983-05-25
@@ -558,10 +438,10 @@ COPY public.film (id, created, edited, title, episode_id, opening_crawl, directo
 
 
 --
--- Data for Name: film_characters; Type: TABLE DATA; Schema: public;
+-- Data for Name: person_film; Type: TABLE DATA; Schema: public;
 --
 
-COPY public.film_characters (id, film_id, people_id) FROM stdin;
+COPY public.person_film (id, film_id, people_id) FROM stdin;
 1	1	10
 2	1	13
 3	1	12
@@ -728,10 +608,10 @@ COPY public.film_characters (id, film_id, people_id) FROM stdin;
 
 
 --
--- Data for Name: film_planets; Type: TABLE DATA; Schema: public;
+-- Data for Name: film_planet; Type: TABLE DATA; Schema: public;
 --
 
-COPY public.film_planets (id, film_id, planet_id) FROM stdin;
+COPY public.film_planet (id, film_id, planet_id) FROM stdin;
 1	1	1
 2	1	3
 3	1	2
@@ -850,10 +730,10 @@ COPY public.film_species (id, film_id, species_id) FROM stdin;
 
 
 --
--- Data for Name: film_starships; Type: TABLE DATA; Schema: public;
+-- Data for Name: film_starship; Type: TABLE DATA; Schema: public;
 --
 
-COPY public.film_starships (id, film_id, starship_id) FROM stdin;
+COPY public.film_starship (id, film_id, starship_id) FROM stdin;
 1	1	11
 2	1	10
 3	1	13
@@ -913,10 +793,10 @@ COPY public.film_starships (id, film_id, starship_id) FROM stdin;
 
 
 --
--- Data for Name: film_vehicles; Type: TABLE DATA; Schema: public;
+-- Data for Name: film_vehicle; Type: TABLE DATA; Schema: public;
 --
 
-COPY public.film_vehicles (id, film_id, vehicle_id) FROM stdin;
+COPY public.film_vehicle (id, film_id, vehicle_id) FROM stdin;
 1	1	8
 2	1	4
 3	1	7
@@ -1173,10 +1053,10 @@ COPY public.species (id, created, edited, name, classification, designation, ave
 
 
 --
--- Data for Name: species_people; Type: TABLE DATA; Schema: public;
+-- Data for Name: person_species; Type: TABLE DATA; Schema: public;
 --
 
-COPY public.species_people (id, species_id, people_id) FROM stdin;
+COPY public.person_species (id, species_id, people_id) FROM stdin;
 1	1	68
 2	1	74
 3	1	66
@@ -1275,10 +1155,10 @@ COPY public.starship (transport_ptr_id, hyperdrive_rating, "MGLT", starship_clas
 
 
 --
--- Data for Name: starship_pilots; Type: TABLE DATA; Schema: public;
+-- Data for Name: person_starship; Type: TABLE DATA; Schema: public;
 --
 
-COPY public.starship_pilots (id, starship_id, people_id) FROM stdin;
+COPY public.person_starship (id, starship_id, people_id) FROM stdin;
 1	10	25
 2	10	13
 3	10	31
@@ -1464,10 +1344,10 @@ COPY public.vehicle_pilots (id, vehicle_id, people_id) FROM stdin;
 
 
 --
--- Name: film_characters_id_seq; Type: SEQUENCE SET; Schema: public;
+-- Name: person_film_id_seq; Type: SEQUENCE SET; Schema: public;
 --
 
-SELECT pg_catalog.setval('public.film_characters_id_seq', 162, true);
+SELECT pg_catalog.setval('public.person_film_id_seq', 162, true);
 
 
 --
@@ -1478,10 +1358,10 @@ SELECT pg_catalog.setval('public.film_id_seq', 6, true);
 
 
 --
--- Name: film_planets_id_seq; Type: SEQUENCE SET; Schema: public;
+-- Name: film_planet_id_seq; Type: SEQUENCE SET; Schema: public;
 --
 
-SELECT pg_catalog.setval('public.film_planets_id_seq', 33, true);
+SELECT pg_catalog.setval('public.film_planet_id_seq', 33, true);
 
 
 --
@@ -1492,17 +1372,17 @@ SELECT pg_catalog.setval('public.film_species_id_seq', 73, true);
 
 
 --
--- Name: film_starships_id_seq; Type: SEQUENCE SET; Schema: public;
+-- Name: film_starship_id_seq; Type: SEQUENCE SET; Schema: public;
 --
 
-SELECT pg_catalog.setval('public.film_starships_id_seq', 55, true);
+SELECT pg_catalog.setval('public.film_starship_id_seq', 55, true);
 
 
 --
--- Name: film_vehicles_id_seq; Type: SEQUENCE SET; Schema: public;
+-- Name: film_vehicle_id_seq; Type: SEQUENCE SET; Schema: public;
 --
 
-SELECT pg_catalog.setval('public.film_vehicles_id_seq', 49, true);
+SELECT pg_catalog.setval('public.film_vehicle_id_seq', 49, true);
 
 
 --
@@ -1527,10 +1407,10 @@ SELECT pg_catalog.setval('public.species_id_seq', 37, true);
 
 
 --
--- Name: species_people_id_seq; Type: SEQUENCE SET; Schema: public;
+-- Name: person_species_id_seq; Type: SEQUENCE SET; Schema: public;
 --
 
-SELECT pg_catalog.setval('public.species_people_id_seq', 50, true);
+SELECT pg_catalog.setval('public.person_species_id_seq', 50, true);
 
 
 --
@@ -1555,19 +1435,19 @@ SELECT pg_catalog.setval('public.vehicle_new_pilots_id_seq', 13, true);
 
 
 --
--- Name: film_characters film_characters_film_id_people_id_key; Type: CONSTRAINT; Schema: public;
+-- Name: person_film person_film_film_id_people_id_key; Type: CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_characters
-    ADD CONSTRAINT film_characters_film_id_people_id_key UNIQUE (film_id, people_id);
+ALTER TABLE ONLY public.person_film
+    ADD CONSTRAINT person_film_film_id_people_id_key UNIQUE (film_id, people_id);
 
 
 --
--- Name: film_characters film_characters_pkey; Type: CONSTRAINT; Schema: public;
+-- Name: person_film person_film_pkey; Type: CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_characters
-    ADD CONSTRAINT film_characters_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.person_film
+    ADD CONSTRAINT person_film_pkey PRIMARY KEY (id);
 
 
 --
@@ -1579,19 +1459,19 @@ ALTER TABLE ONLY public.film
 
 
 --
--- Name: film_planets film_planets_film_id_planet_id_key; Type: CONSTRAINT; Schema: public;
+-- Name: film_planet film_planet_film_id_planet_id_key; Type: CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_planets
-    ADD CONSTRAINT film_planets_film_id_planet_id_key UNIQUE (film_id, planet_id);
+ALTER TABLE ONLY public.film_planet
+    ADD CONSTRAINT film_planet_film_id_planet_id_key UNIQUE (film_id, planet_id);
 
 
 --
--- Name: film_planets film_planets_pkey; Type: CONSTRAINT; Schema: public;
+-- Name: film_planet film_planet_pkey; Type: CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_planets
-    ADD CONSTRAINT film_planets_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.film_planet
+    ADD CONSTRAINT film_planet_pkey PRIMARY KEY (id);
 
 
 --
@@ -1611,35 +1491,35 @@ ALTER TABLE ONLY public.film_species
 
 
 --
--- Name: film_starships film_starships_film_id_starship_id_key; Type: CONSTRAINT; Schema: public;
+-- Name: film_starship film_starship_film_id_starship_id_key; Type: CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_starships
-    ADD CONSTRAINT film_starships_film_id_starship_id_key UNIQUE (film_id, starship_id);
-
-
---
--- Name: film_starships film_starships_pkey; Type: CONSTRAINT; Schema: public;
---
-
-ALTER TABLE ONLY public.film_starships
-    ADD CONSTRAINT film_starships_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.film_starship
+    ADD CONSTRAINT film_starship_film_id_starship_id_key UNIQUE (film_id, starship_id);
 
 
 --
--- Name: film_vehicles film_vehicles_film_id_vehicle_id_key; Type: CONSTRAINT; Schema: public;
+-- Name: film_starship film_starship_pkey; Type: CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_vehicles
-    ADD CONSTRAINT film_vehicles_film_id_vehicle_id_key UNIQUE (film_id, vehicle_id);
+ALTER TABLE ONLY public.film_starship
+    ADD CONSTRAINT film_starship_pkey PRIMARY KEY (id);
 
 
 --
--- Name: film_vehicles film_vehicles_pkey; Type: CONSTRAINT; Schema: public;
+-- Name: film_vehicle film_vehicle_film_id_vehicle_id_key; Type: CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_vehicles
-    ADD CONSTRAINT film_vehicles_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.film_vehicle
+    ADD CONSTRAINT film_vehicle_film_id_vehicle_id_key UNIQUE (film_id, vehicle_id);
+
+
+--
+-- Name: film_vehicle film_vehicle_pkey; Type: CONSTRAINT; Schema: public;
+--
+
+ALTER TABLE ONLY public.film_vehicle
+    ADD CONSTRAINT film_vehicle_pkey PRIMARY KEY (id);
 
 
 --
@@ -1659,19 +1539,19 @@ ALTER TABLE ONLY public.planet
 
 
 --
--- Name: species_people species_people_pkey; Type: CONSTRAINT; Schema: public;
+-- Name: person_species person_species_pkey; Type: CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.species_people
-    ADD CONSTRAINT species_people_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.person_species
+    ADD CONSTRAINT person_species_pkey PRIMARY KEY (id);
 
 
 --
--- Name: species_people species_people_species_id_people_id_key; Type: CONSTRAINT; Schema: public;
+-- Name: person_species person_species_species_id_people_id_key; Type: CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.species_people
-    ADD CONSTRAINT species_people_species_id_people_id_key UNIQUE (species_id, people_id);
+ALTER TABLE ONLY public.person_species
+    ADD CONSTRAINT person_species_species_id_people_id_key UNIQUE (species_id, people_id);
 
 
 --
@@ -1683,18 +1563,18 @@ ALTER TABLE ONLY public.species
 
 
 --
--- Name: starship_pilots starship_new_pilots_pkey; Type: CONSTRAINT; Schema: public;
+-- Name: person_starship starship_new_pilots_pkey; Type: CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.starship_pilots
+ALTER TABLE ONLY public.person_starship
     ADD CONSTRAINT starship_new_pilots_pkey PRIMARY KEY (id);
 
 
 --
--- Name: starship_pilots starship_new_pilots_starship_id_people_id_key; Type: CONSTRAINT; Schema: public;
+-- Name: person_starship starship_new_pilots_starship_id_people_id_key; Type: CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.starship_pilots
+ALTER TABLE ONLY public.person_starship
     ADD CONSTRAINT starship_new_pilots_starship_id_people_id_key UNIQUE (starship_id, people_id);
 
 
@@ -1739,31 +1619,31 @@ ALTER TABLE ONLY public.vehicle
 
 
 --
--- Name: film_characters_a42854b3; Type: INDEX; Schema: public;
+-- Name: person_film_a42854b3; Type: INDEX; Schema: public;
 --
 
-CREATE INDEX film_characters_a42854b3 ON public.film_characters USING btree (people_id);
-
-
---
--- Name: film_characters_cd2a3d01; Type: INDEX; Schema: public;
---
-
-CREATE INDEX film_characters_cd2a3d01 ON public.film_characters USING btree (film_id);
+CREATE INDEX person_film_a42854b3 ON public.person_film USING btree (people_id);
 
 
 --
--- Name: film_planets_9f160e85; Type: INDEX; Schema: public;
+-- Name: person_film_cd2a3d01; Type: INDEX; Schema: public;
 --
 
-CREATE INDEX film_planets_9f160e85 ON public.film_planets USING btree (planet_id);
+CREATE INDEX person_film_cd2a3d01 ON public.person_film USING btree (film_id);
 
 
 --
--- Name: film_planets_cd2a3d01; Type: INDEX; Schema: public;
+-- Name: film_planet_9f160e85; Type: INDEX; Schema: public;
 --
 
-CREATE INDEX film_planets_cd2a3d01 ON public.film_planets USING btree (film_id);
+CREATE INDEX film_planet_9f160e85 ON public.film_planet USING btree (planet_id);
+
+
+--
+-- Name: film_planet_cd2a3d01; Type: INDEX; Schema: public;
+--
+
+CREATE INDEX film_planet_cd2a3d01 ON public.film_planet USING btree (film_id);
 
 
 --
@@ -1781,31 +1661,31 @@ CREATE INDEX film_species_cd2a3d01 ON public.film_species USING btree (film_id);
 
 
 --
--- Name: film_starships_b184f24b; Type: INDEX; Schema: public;
+-- Name: film_starship_b184f24b; Type: INDEX; Schema: public;
 --
 
-CREATE INDEX film_starships_b184f24b ON public.film_starships USING btree (starship_id);
-
-
---
--- Name: film_starships_cd2a3d01; Type: INDEX; Schema: public;
---
-
-CREATE INDEX film_starships_cd2a3d01 ON public.film_starships USING btree (film_id);
+CREATE INDEX film_starship_b184f24b ON public.film_starship USING btree (starship_id);
 
 
 --
--- Name: film_vehicles_35ec04dc; Type: INDEX; Schema: public;
+-- Name: film_starship_cd2a3d01; Type: INDEX; Schema: public;
 --
 
-CREATE INDEX film_vehicles_35ec04dc ON public.film_vehicles USING btree (vehicle_id);
+CREATE INDEX film_starship_cd2a3d01 ON public.film_starship USING btree (film_id);
 
 
 --
--- Name: film_vehicles_cd2a3d01; Type: INDEX; Schema: public;
+-- Name: film_vehicle_35ec04dc; Type: INDEX; Schema: public;
 --
 
-CREATE INDEX film_vehicles_cd2a3d01 ON public.film_vehicles USING btree (film_id);
+CREATE INDEX film_vehicle_35ec04dc ON public.film_vehicle USING btree (vehicle_id);
+
+
+--
+-- Name: film_vehicle_cd2a3d01; Type: INDEX; Schema: public;
+--
+
+CREATE INDEX film_vehicle_cd2a3d01 ON public.film_vehicle USING btree (film_id);
 
 
 --
@@ -1823,31 +1703,31 @@ CREATE INDEX species_053fec3a ON public.species USING btree (homeworld_id);
 
 
 --
--- Name: species_people_1699a6e9; Type: INDEX; Schema: public;
+-- Name: person_species_1699a6e9; Type: INDEX; Schema: public;
 --
 
-CREATE INDEX species_people_1699a6e9 ON public.species_people USING btree (species_id);
+CREATE INDEX person_species_1699a6e9 ON public.person_species USING btree (species_id);
 
 
 --
--- Name: species_people_a42854b3; Type: INDEX; Schema: public;
+-- Name: person_species_a42854b3; Type: INDEX; Schema: public;
 --
 
-CREATE INDEX species_people_a42854b3 ON public.species_people USING btree (people_id);
+CREATE INDEX person_species_a42854b3 ON public.person_species USING btree (people_id);
 
 
 --
 -- Name: starship_new_pilots_a42854b3; Type: INDEX; Schema: public;
 --
 
-CREATE INDEX starship_new_pilots_a42854b3 ON public.starship_pilots USING btree (people_id);
+CREATE INDEX starship_new_pilots_a42854b3 ON public.person_starship USING btree (people_id);
 
 
 --
 -- Name: starship_new_pilots_b184f24b; Type: INDEX; Schema: public;
 --
 
-CREATE INDEX starship_new_pilots_b184f24b ON public.starship_pilots USING btree (starship_id);
+CREATE INDEX starship_new_pilots_b184f24b ON public.person_starship USING btree (starship_id);
 
 
 --
@@ -1873,26 +1753,26 @@ ALTER TABLE ONLY public.vehicle_pilots
 
 
 --
--- Name: starship_pilots D225bcc90cd15d807ce77e44f180437b; Type: FK CONSTRAINT; Schema: public;
+-- Name: person_starship D225bcc90cd15d807ce77e44f180437b; Type: FK CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.starship_pilots
+ALTER TABLE ONLY public.person_starship
     ADD CONSTRAINT "D225bcc90cd15d807ce77e44f180437b" FOREIGN KEY (starship_id) REFERENCES public.starship(transport_ptr_id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
--- Name: film_starships c9557c36862e4d829e04e4c0b701a726; Type: FK CONSTRAINT; Schema: public;
+-- Name: film_starship c9557c36862e4d829e04e4c0b701a726; Type: FK CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_starships
+ALTER TABLE ONLY public.film_starship
     ADD CONSTRAINT c9557c36862e4d829e04e4c0b701a726 FOREIGN KEY (starship_id) REFERENCES public.starship(transport_ptr_id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
--- Name: film_vehicles ca78bec1b98dea4796ddc0b5d0f4b7f9; Type: FK CONSTRAINT; Schema: public;
+-- Name: film_vehicle ca78bec1b98dea4796ddc0b5d0f4b7f9; Type: FK CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_vehicles
+ALTER TABLE ONLY public.film_vehicle
     ADD CONSTRAINT ca78bec1b98dea4796ddc0b5d0f4b7f9 FOREIGN KEY (vehicle_id) REFERENCES public.vehicle(transport_ptr_id) DEFERRABLE INITIALLY DEFERRED;
 
 
@@ -1937,34 +1817,34 @@ ALTER TABLE ONLY public.film_species
 
 
 --
--- Name: film_characters fil_people_id_5c8083a9912b1c0f_fk_people_id; Type: FK CONSTRAINT; Schema: public;
+-- Name: person_film fil_people_id_5c8083a9912b1c0f_fk_people_id; Type: FK CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_characters
+ALTER TABLE ONLY public.person_film
     ADD CONSTRAINT fil_people_id_5c8083a9912b1c0f_fk_people_id FOREIGN KEY (people_id) REFERENCES public.people(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
--- Name: film_planets fil_planet_id_6dd2ed156512090c_fk_planet_id; Type: FK CONSTRAINT; Schema: public;
+-- Name: film_planet fil_planet_id_6dd2ed156512090c_fk_planet_id; Type: FK CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_planets
+ALTER TABLE ONLY public.film_planet
     ADD CONSTRAINT fil_planet_id_6dd2ed156512090c_fk_planet_id FOREIGN KEY (planet_id) REFERENCES public.planet(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
--- Name: film_characters film_cha_film_id_6558b5f19b0a4de_fk_film_id; Type: FK CONSTRAINT; Schema: public;
+-- Name: person_film film_cha_film_id_6558b5f19b0a4de_fk_film_id; Type: FK CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_characters
+ALTER TABLE ONLY public.person_film
     ADD CONSTRAINT film_cha_film_id_6558b5f19b0a4de_fk_film_id FOREIGN KEY (film_id) REFERENCES public.film(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
--- Name: film_planets film_pl_film_id_6c990219a61b4102_fk_film_id; Type: FK CONSTRAINT; Schema: public;
+-- Name: film_planet film_pl_film_id_6c990219a61b4102_fk_film_id; Type: FK CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_planets
+ALTER TABLE ONLY public.film_planet
     ADD CONSTRAINT film_pl_film_id_6c990219a61b4102_fk_film_id FOREIGN KEY (film_id) REFERENCES public.film(id) DEFERRABLE INITIALLY DEFERRED;
 
 
@@ -1977,42 +1857,42 @@ ALTER TABLE ONLY public.film_species
 
 
 --
--- Name: film_starships film_st_film_id_60b8ebc2b2feaecc_fk_film_id; Type: FK CONSTRAINT; Schema: public;
+-- Name: film_starship film_st_film_id_60b8ebc2b2feaecc_fk_film_id; Type: FK CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_starships
+ALTER TABLE ONLY public.film_starship
     ADD CONSTRAINT film_st_film_id_60b8ebc2b2feaecc_fk_film_id FOREIGN KEY (film_id) REFERENCES public.film(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
--- Name: film_vehicles film_veh_film_id_3d4aa7045aa9327_fk_film_id; Type: FK CONSTRAINT; Schema: public;
+-- Name: film_vehicle film_veh_film_id_3d4aa7045aa9327_fk_film_id; Type: FK CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.film_vehicles
+ALTER TABLE ONLY public.film_vehicle
     ADD CONSTRAINT film_veh_film_id_3d4aa7045aa9327_fk_film_id FOREIGN KEY (film_id) REFERENCES public.film(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
--- Name: species_people s_species_id_7268bd59f4dc8b63_fk_species_id; Type: FK CONSTRAINT; Schema: public;
+-- Name: person_species s_species_id_7268bd59f4dc8b63_fk_species_id; Type: FK CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.species_people
+ALTER TABLE ONLY public.person_species
     ADD CONSTRAINT s_species_id_7268bd59f4dc8b63_fk_species_id FOREIGN KEY (species_id) REFERENCES public.species(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
--- Name: species_people spe_people_id_60209831784ef66b_fk_people_id; Type: FK CONSTRAINT; Schema: public;
+-- Name: person_species spe_people_id_60209831784ef66b_fk_people_id; Type: FK CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.species_people
+ALTER TABLE ONLY public.person_species
     ADD CONSTRAINT spe_people_id_60209831784ef66b_fk_people_id FOREIGN KEY (people_id) REFERENCES public.people(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
--- Name: starship_pilots sta_people_id_7328179744e0f4da_fk_people_id; Type: FK CONSTRAINT; Schema: public;
+-- Name: person_starship sta_people_id_7328179744e0f4da_fk_people_id; Type: FK CONSTRAINT; Schema: public;
 --
 
-ALTER TABLE ONLY public.starship_pilots
+ALTER TABLE ONLY public.person_starship
     ADD CONSTRAINT sta_people_id_7328179744e0f4da_fk_people_id FOREIGN KEY (people_id) REFERENCES public.people(id) DEFERRABLE INITIALLY DEFERRED;
 
 

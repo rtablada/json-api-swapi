@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "bookshelf": "^0.13.3",
     "dotenv": "^6.0.0",
     "esm": "^3.0.72",
     "fortune": "^5.4.5",
@@ -12,6 +13,7 @@
     "fortune-postgres": "^1.6.4",
     "inflected": "^2.0.4",
     "knex": "^0.15.2",
+    "lodash": "^4.17.10",
     "pg": "^7.4.3"
   }
 }

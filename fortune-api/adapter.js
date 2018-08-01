@@ -1,6 +1,8 @@
 import Adapter from 'fortune/lib/adapter';
-import { pluralize } from 'inflected';
 import knex from 'knex';
+import bookshelf from 'bookshelf';
+import { pluralize } from 'inflected';
+import Startup from './adapter/startup';
 
 export default () =>
   class PostgreSQLAdapter extends Adapter {
@@ -10,102 +12,74 @@ export default () =>
       } = this;
 
       this.connection = knex(options);
+      this.orm = bookshelf(this.connection);
+      this.startup = new Startup(this);
+      await this.startup.checkTablesExist();
 
-      await this.checkTablesExist();
+      this.setupModels();
     }
 
-    async checkTablesExist() {
-      const { recordTypes } = this;
-      const resourceNames = Object.keys(recordTypes);
-
-      for (let i = 0; i < resourceNames.length; i++) {
-        const resourceName = resourceNames[i];
-        const tableName = pluralize(resourceName);
-
-        if (!await this.connection.schema.hasTable(tableName)) {
-          await this.createTable(resourceName);
-        } else {
-          // debugger;
-        }
-      }
-
-      for (let i = 0; i < resourceNames.length; i++) {
-        const resourceName = resourceNames[i];
-
-        await this.ensureRelations(resourceName);
-      }
-    }
-
-    async ensureRelations(resourceName) {
+    getRelations(resourceName) {
       const { recordTypes } = this;
       const typeDefinition = recordTypes[resourceName];
       const properties = Object.keys(typeDefinition);
-      const tableName = pluralize(resourceName);
 
-      const relations = properties.reduce((accum, relationName) => {
+      return properties.reduce((accum, relationName) => {
         if (typeDefinition[relationName].link) {
           return [...accum, { relationName, relation: typeDefinition[relationName] }];
         }
 
         return accum;
       }, []);
+    }
 
-      const belongsTo = relations.filter(a => !a.relation.isArray);
+    getRelationType(relation) {
+      const { recordTypes } = this;
 
-      if (belongsTo.length > 0) {
-        for (let i = 0; i < belongsTo.length; i++) {
-          const { relation } = belongsTo[i];
-          const columnName = `${relation.link}_id`;
-          const relationTableName = pluralize(relation.link);
-
-          if (!await this.connection.schema.hasColumn(tableName, columnName)) {
-            await this.connection.schema.alterTable(tableName, t => {
-              t.integer(columnName)
-                .references('id')
-                .inTable(relationTableName);
-            });
-          }
-        }
+      if (!relation.isArray) {
+        return 'belongsTo';
+      } else if (recordTypes[relation.link][relation.inverse].isArray) {
+        return 'belongsToMany';
+      } else {
+        return 'hasMany';
       }
     }
 
-    async createTable(resourceName) {
+    setupModels() {
       const { recordTypes } = this;
-      const typeDefinition = recordTypes[resourceName];
-      const properties = Object.keys(typeDefinition);
-      const tableName = pluralize(resourceName);
+      const resourceNames = Object.keys(recordTypes);
 
-      debugger;
+      this.models = resourceNames.reduce((models, resourceName) => {
+        const relations = this.getRelations(resourceName);
+        const tableName = pluralize(resourceName);
 
-      await this.connection.schema.createTable(tableName, (t) => {
-        t.increments('id');
-        t.timestamps();
+        const relationDefinitions = relations.reduce((r, { relationName, relation }) => {
+          const relationType = this.getRelationType(relation);
 
-        properties.forEach(key => {
-          let columnType = this.getType(typeDefinition[key]);
+          return {
+            ...r,
+            [relationName]: function() {
+              this[relationType](relation.link);
+            }
+          };
+        }, {});
 
-          if (columnType) {
-            t[columnType](key);
-          }
+        const model = this.orm.Model.extend({
+          tableName,
+
+          ...relationDefinitions
         });
-      });
+
+        return { ...models, [resourceName]: model };
+      }, {});
     }
 
-    getType(value) {
-      if (value.columnType) {
-        return value.columnType;
-      } else if (typeof value === 'string') {
-        return value;
-      } else if (Array.isArray(value) || value.isArray) {
-        return
-        // Relationship stuff...
-      } else if (value.type) {
-        switch (value.type.name) {
-          case 'String':
-            return 'string';
-          case 'Number':
-            return 'integer'
-        }
+    async find(type, ids, options, meta) {
+      if (!this.ids) {
+        const result = await this.models[type].fetchAll();
+        debugger;
+
+        return result.toArray();
       }
     }
   };
