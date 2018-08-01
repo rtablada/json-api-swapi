@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import http from 'http';
 import fortuneHTTP from 'fortune-http';
 import fortune from 'fortune';
-import pgAdapter from './adapter';
+import pgAdapter from 'fortune-postgres';
 import jsonApiSerializer from 'fortune-json-api';
 import recordTypes from './record-types';
 

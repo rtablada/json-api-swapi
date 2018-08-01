@@ -1,0 +1,38 @@
+"id","name","classification","designation","averageHeight","skinColors","hairColors","eyeColors","averageLifespan","language","homeworld"
+1,"Human","mammal","sentient","180","caucasian, black, asian, hispanic","blonde, brown, black, red","brown, blue, green, hazel, grey, amber","120","Galactic Basic",9
+2,"Droid","artificial","sentient","n/a","n/a","n/a","n/a","indefinite","n/a",
+3,"Wookie","mammal","sentient","210","gray","black, brown","blue, green, yellow, brown, golden, red","400","Shyriiwook",14
+4,"Rodian","sentient","reptilian","170","green, blue","n/a","black","unknown","Galatic Basic",23
+5,"Hutt","gastropod","sentient","300","green, brown, tan","n/a","yellow, red","1000","Huttese",24
+6,"Yoda's species","mammal","sentient","66","green, yellow","brown, white","brown, green, yellow","900","Galactic basic",28
+7,"Trandoshan","reptile","sentient","200","brown, green","none","yellow, orange","unknown","Dosh",29
+8,"Mon Calamari","amphibian","sentient","160","red, blue, brown, magenta","none","yellow","unknown","Mon Calamarian",31
+9,"Ewok","mammal","sentient","100","brown","white, brown, black","orange, brown","unknown","Ewokese",7
+10,"Sullustan","mammal","sentient","180","pale","none","black","unknown","Sullutese",33
+11,"Neimodian","unknown","sentient","180","grey, green","none","red, pink","unknown","Neimoidia",18
+12,"Gungan","amphibian","sentient","190","brown, green","none","orange","unknown","Gungan basic",8
+13,"Toydarian","mammal","sentient","120","blue, green, grey","none","yellow","91","Toydarian",34
+14,"Dug","mammal","sentient","100","brown, purple, grey, red","none","yellow, blue","unknown","Dugese",35
+15,"Twi'lek","mammals","sentient","200","orange, yellow, blue, green, pink, purple, tan","none","blue, brown, orange, pink","unknown","Twi'leki",37
+16,"Aleena","reptile","sentient","80","blue, gray","none","unknown","79","Aleena",38
+17,"Vulptereen","unknown","sentient","100","grey","none","yellow","unknown","vulpterish",39
+18,"Xexto","unknown","sentient","125","grey, yellow, purple","none","black","unknown","Xextese",40
+19,"Toong","unknown","sentient","200","grey, green, yellow","none","orange","unknown","Tundan",41
+20,"Cerean","mammal","sentient","200","pale pink","red, blond, black, white","hazel","unknown","Cerean",43
+21,"Nautolan","amphibian","sentient","180","green, blue, brown, red","none","black","70","Nautila",44
+22,"Zabrak","mammal","sentient","180","pale, brown, red, orange, yellow","black","brown, orange","unknown","Zabraki",45
+23,"Tholothian","mammal","sentient","unknown","dark","unknown","blue, indigo","unknown","unknown",46
+24,"Iktotchi","unknown","sentient","180","pink","none","orange","unknown","Iktotchese",47
+25,"Quermian","mammal","sentient","240","white","none","yellow","86","Quermian",48
+26,"Kel Dor","unknown","sentient","180","peach, orange, red","none","black, silver","70","Kel Dor",49
+27,"Chagrian","amphibian","sentient","190","blue","none","blue","unknown","Chagria",50
+28,"Geonosian","insectoid","sentient","178","green, brown","none","green, hazel","unknown","Geonosian",11
+29,"Mirialan","mammal","sentient","180","yellow, green","black, brown","blue, green, red, yellow, brown, orange","unknown","Mirialan",51
+30,"Clawdite","reptilian","sentient","180","green, yellow","none","yellow","70","Clawdite",54
+31,"Besalisk","amphibian","sentient","178","brown","none","yellow","75","besalisk",55
+32,"Kaminoan","amphibian","sentient","220","grey, blue","none","black","80","Kaminoan",10
+33,"Skakoan","mammal","sentient","unknown","grey, green","none","unknown","unknown","Skakoan",56
+34,"Muun","mammal","sentient","190","grey, white","none","black","100","Muun",57
+35,"Togruta","mammal","sentient","180","red, white, orange, yellow, green, blue","none","red, orange, yellow, green, blue, black","94","Togruti",58
+36,"Kaleesh","reptile","sentient","170","brown, orange, tan","none","yellow","80","Kaleesh",59
+37,"Pau'an","mammal","sentient","190","grey","none","black","700","Utapese",12
