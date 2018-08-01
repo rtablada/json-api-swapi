@@ -25,7 +25,46 @@ export default () =>
         if (!await this.connection.schema.hasTable(tableName)) {
           await this.createTable(resourceName);
         } else {
-          debugger;
+          // debugger;
+        }
+      }
+
+      for (let i = 0; i < resourceNames.length; i++) {
+        const resourceName = resourceNames[i];
+
+        await this.ensureRelations(resourceName);
+      }
+    }
+
+    async ensureRelations(resourceName) {
+      const { recordTypes } = this;
+      const typeDefinition = recordTypes[resourceName];
+      const properties = Object.keys(typeDefinition);
+      const tableName = pluralize(resourceName);
+
+      const relations = properties.reduce((accum, relationName) => {
+        if (typeDefinition[relationName].link) {
+          return [...accum, { relationName, relation: typeDefinition[relationName] }];
+        }
+
+        return accum;
+      }, []);
+
+      const belongsTo = relations.filter(a => !a.relation.isArray);
+
+      if (belongsTo.length > 0) {
+        for (let i = 0; i < belongsTo.length; i++) {
+          const { relation } = belongsTo[i];
+          const columnName = `${relation.link}_id`;
+          const relationTableName = pluralize(relation.link);
+
+          if (!await this.connection.schema.hasColumn(tableName, columnName)) {
+            await this.connection.schema.alterTable(tableName, t => {
+              t.integer(columnName)
+                .references('id')
+                .inTable(relationTableName);
+            });
+          }
         }
       }
     }
