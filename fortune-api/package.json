@@ -1,0 +1,17 @@
+{
+  "name": "fortune-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "esm": "^3.0.72",
+    "fortune": "^5.4.5",
+    "fortune-http": "^1.2.8",
+    "fortune-json-api": "^2.1.5",
+    "fortune-postgres": "^1.6.4",
+    "inflected": "^2.0.4",
+    "knex": "^0.15.2",
+    "pg": "^7.4.3"
+  }
+}
