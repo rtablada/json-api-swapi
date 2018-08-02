@@ -95,3 +95,20 @@
 ---
 
 # GraphQL Obviously
+
+---
+
+# What if there was a different way?
+
+---
+
+[.background-color: #0b4e22]
+![inline](http://jsonapi.org/images/jsonapi.png)
+
+---
+
+# live Demo
+
+---
+
+## Future

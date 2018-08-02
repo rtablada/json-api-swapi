@@ -3,6 +3,21 @@ import { singularize, classify } from 'inflected';
 
 const router = new Router();
 
+router.get('/films', async (ctx) => {
+  const results = await ctx.app.db.Film.fetchAll();
+
+
+  ctx.body = {
+    data: results.map(model => {
+      return {
+        id: model.id,
+        type: 'films',
+        attributes: model
+      };
+    })
+  };
+});
+
 router.get('/:resource', async (ctx) => {
   const { resource } = ctx.params;
   const modelName = classify(singularize(resource));
